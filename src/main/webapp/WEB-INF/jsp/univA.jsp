@@ -21,7 +21,7 @@
             <c:forEach items="${students}" var="object">
                 <tr>
                     <td>${object.getSno()}</td>
-                    <td>${object.getPno()}</td>
+                    <td>${object.getProfessorEntity().getPno()}</td>
                     <td>${object.getSname()}</td>
                     <td>${object.getYear()}</td>
                     <td>${object.getDept()}</td>

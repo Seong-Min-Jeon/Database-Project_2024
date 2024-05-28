@@ -32,11 +32,3 @@ public class LectureId implements Serializable {
     }
 
 }
-
-//@Data
-//@NoArgsConstructor
-//@AllArgsConstructor
-//public class LectureId implements Serializable {
-//    private String cno;
-//    private int pno;
-//}

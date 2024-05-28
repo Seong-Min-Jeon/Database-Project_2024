@@ -32,11 +32,3 @@ public class EnrollId implements Serializable {
     }
 
 }
-
-//@Data
-//@NoArgsConstructor
-//@AllArgsConstructor
-//public class EnrollId implements Serializable {
-//    private int sno;
-//    private String cno;
-//}

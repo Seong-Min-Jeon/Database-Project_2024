@@ -14,12 +14,12 @@ public class StudentEntity {
     @Column(name = "sno")
     private int sno;
 
-    @Column(name = "pno")
-    private int pno;
+//    @Column(name = "pno")
+//    private int pno;
 
-//    @ManyToOne
-//    @JoinColumn(name = "pno")
-//    private ProfessorEntity professorEntity;
+    @ManyToOne
+    @JoinColumn(name = "pno")
+    private ProfessorEntity professorEntity;
 
     @Column(name = "sname")
     private String sname;

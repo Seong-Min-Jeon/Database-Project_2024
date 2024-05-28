@@ -13,23 +13,15 @@ public class EnrollEntity {
     @EmbeddedId
     private EnrollId enrollId;
 
-//    @Id
-//    @Column(name = "sno")
-//    private int sno;
-//
-//    @Id
-//    @Column(name = "cno")
-//    private String cno;
+    @ManyToOne
+    @JoinColumn(name = "sno")
+    @MapsId("sno")
+    private StudentEntity studentEntity;
 
-//    @Id
-//    @ManyToOne
-//    @JoinColumn(name = "sno")
-//    private StudentEntity studentEntity;
-//
-//    @Id
-//    @ManyToOne
-//    @Column(name = "cno")
-//    private CourseEntity courseEntity;
+    @ManyToOne
+    @JoinColumn(name = "cno")
+    @MapsId("cno")
+    private CourseEntity courseEntity;
 
     @Column(name = "grade")
     private String grade;

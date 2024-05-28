@@ -15,23 +15,15 @@ public class LectureEntity {
     @EmbeddedId
     private LectureId lectureId;
 
-//    @Id
-//    @Column(name = "cno")
-//    private String cno;
-//
-//    @Id
-//    @Column(name = "pno")
-//    private int pno;
+    @ManyToOne
+    @JoinColumn(name = "cno")
+    @MapsId("cno")
+    private CourseEntity courseEntity;
 
-//    @Id
-//    @ManyToOne
-//    @JoinColumn(name = "cno")
-//    private CourseEntity courseEntity;
-//
-//    @Id
-//    @ManyToOne
-//    @JoinColumn(name = "pno")
-//    private ProfessorEntity professorEntity;
+    @ManyToOne
+    @JoinColumn(name = "pno")
+    @MapsId("pno")
+    private ProfessorEntity professorEntity;
 
     @Column(name = "lec_time")
     private String lec_time;
