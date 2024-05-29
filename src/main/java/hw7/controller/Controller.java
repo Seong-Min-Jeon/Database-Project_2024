@@ -2,6 +2,7 @@ package hw7.controller;
 
 import hw7.domain.*;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
@@ -11,28 +12,8 @@ import java.util.List;
 @RestController
 public class Controller {
     private final Facade facade;
-//    private final ProfessorService professorService;
-//    private final CourseService courseService;
-//    private final EnrollService enrollService;
-//    private final LectureService lectureService;
 
     public Controller(Facade facade) {this.facade = facade;}
-
-//    public Controller(StudentService studentService) {
-//        this.studentService = studentService;
-//    }
-//    public Controller(ProfessorService professorService) {
-//        this.professorService = professorService;
-//    }
-//    public Controller(CourseService courseService) {
-//        this.courseService = courseService;
-//    }
-//    public Controller(EnrollService enrollService) {
-//        this.enrollService = enrollService;
-//    }
-//    public Controller(LectureService lectureService) {
-//        this.lectureService = lectureService;
-//    }
 
     @GetMapping(value = "/")
     public RedirectView redirectByRoot() {
@@ -61,6 +42,22 @@ public class Controller {
         modelAndView.addObject("enrolls", enrollList);
         modelAndView.addObject("lectures", lectureList);
 
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/university/b")
+    public ModelAndView UnivB() {
+        ModelAndView modelAndView =  new ModelAndView("univB");
+        List<StudentEntity> studentList = facade.getStudentService().findAllStudents();
+        modelAndView.addObject("students", studentList);
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/university/b/1")
+    public ModelAndView UnivB1(String name) {
+        ModelAndView modelAndView =  new ModelAndView("univB1");
+        List<UnivB> list = facade.getStudentService().retrieveUnivB(name);
+        modelAndView.addObject("univB", list);
         return modelAndView;
     }
 

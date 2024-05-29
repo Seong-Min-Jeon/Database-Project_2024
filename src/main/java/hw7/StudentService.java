@@ -16,6 +16,12 @@ public class StudentService {
         return tracking;
     }
 
+    public List<UnivB> retrieveUnivB(String sname) {
+        List<UnivB> tracking = repository.retrieveUnivB(sname);
+        System.out.println(tracking);
+        return tracking;
+    }
+
 //    public TestEntity save(TestEntity testEntity) {
 //        universityRepository.save(testEntity);
 //        return testEntity;
