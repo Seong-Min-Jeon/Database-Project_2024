@@ -3,6 +3,7 @@ package hw7.controller;
 import hw7.domain.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
@@ -61,36 +62,31 @@ public class Controller {
         return modelAndView;
     }
 
-    @GetMapping(value = "/example")
-    public ModelAndView ViewExample() {
-        ModelAndView modelAndView =  new ModelAndView("example");
-
-        modelAndView.addObject("name", "Example Name");
-
+    @GetMapping(value = "/university/c")
+    public ModelAndView UnivC() {
+        ModelAndView modelAndView =  new ModelAndView("univC");
+        List<UnivC> list = facade.getStudentService().findWrongGradeStudents();
+        modelAndView.addObject("univC", list);
         return modelAndView;
     }
 
-    @GetMapping(value = "/example2")
-    public ModelAndView ViewExample2() {
-        ModelAndView modelAndView =  new ModelAndView("example2");
-
+    @PostMapping(value = "/university/c/1")
+    public ModelAndView UnivC1() {
+        ModelAndView modelAndView =  new ModelAndView("univC1");
+        facade.getEnrollService().updateWrongGrade();
+        List<UnivC> list = facade.getStudentService().findAllGradeAndStudents();
+        modelAndView.addObject("univC", list);
         return modelAndView;
     }
 
-//    @GetMapping(value = "/tests")
-//    public ModelAndView ViewTests() {
-//        ModelAndView modelAndView =  new ModelAndView("tests");
-//        List<TestEntity> testEntities = testService.findAll();
-//        modelAndView.addObject("tests", testEntities);
-//        return modelAndView;
-//    }
-//
-//    @GetMapping(value = "/test")
-//    public ModelAndView SelectTest() {
-//        ModelAndView modelAndView =  new ModelAndView("testById");
-//        TestEntity testEntity = testService.findById(1);
-//        modelAndView.addObject("test", testEntity);
-//        return modelAndView;
-//    }
+    @GetMapping(value = "/university/d")
+    public ModelAndView UnivD() {
+        ModelAndView modelAndView =  new ModelAndView("univD");
+        List<UnivD> list1 = facade.getStudentService().findHighGradeStudent();
+        List<UnivD> list2 = facade.getStudentService().findLowGradeStudent();
+        modelAndView.addObject("univD1", list1);
+        modelAndView.addObject("univD2", list2);
+        return modelAndView;
+    }
 
 }

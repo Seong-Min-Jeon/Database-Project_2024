@@ -16,4 +16,8 @@ public class EnrollService {
         return tracking;
     }
 
+    public void updateWrongGrade() {
+        repository.updateWrongGrade();
+    }
+
 }

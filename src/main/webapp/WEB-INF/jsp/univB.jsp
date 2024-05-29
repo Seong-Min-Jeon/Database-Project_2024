@@ -26,7 +26,7 @@
                 </tr>
             </c:forEach>
         </table>
-        <span><b>STUDENT NAME Table</b></span>
+        <span><b>Student Name Table</b></span>
 
     </body>
 </html>

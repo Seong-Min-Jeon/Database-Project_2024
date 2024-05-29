@@ -25,7 +25,7 @@
                 </tr>
             </c:forEach>
         </table>
-        <span><b>UnivB Table</b></span>
+        <span><b>Course Table</b></span>
 
     </body>
 </html>

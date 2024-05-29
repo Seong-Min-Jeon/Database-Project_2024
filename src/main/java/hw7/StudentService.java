@@ -22,6 +22,30 @@ public class StudentService {
         return tracking;
     }
 
+    public List<UnivC> findWrongGradeStudents() {
+        List<UnivC> tracking = repository.findWrongGradeStudents();
+        System.out.println(tracking);
+        return tracking;
+    }
+
+    public List<UnivC> findAllGradeAndStudents() {
+        List<UnivC> tracking = repository.findAllGradeAndStudents();
+        System.out.println(tracking);
+        return tracking;
+    }
+
+    public List<UnivD> findHighGradeStudent() {
+        List<UnivD> tracking = repository.findHighGradeStudent();
+        System.out.println(tracking);
+        return tracking;
+    }
+
+    public List<UnivD> findLowGradeStudent() {
+        List<UnivD> tracking = repository.findLowGradeStudent();
+        System.out.println(tracking);
+        return tracking;
+    }
+
 //    public TestEntity save(TestEntity testEntity) {
 //        universityRepository.save(testEntity);
 //        return testEntity;
