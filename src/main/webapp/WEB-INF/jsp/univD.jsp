@@ -8,6 +8,11 @@
         <link rel="stylesheet" href="../css/table.css" />
     </header>
     <body>
+
+        <div>
+            <a href="/">Return Home</a>
+        </div>
+
         <h2>d) 과목별로 최고 점수와, 최저 점수를 획득 한 학생의 정보를 확인 할 수 있어야 한다.</h2>
 
         <table>

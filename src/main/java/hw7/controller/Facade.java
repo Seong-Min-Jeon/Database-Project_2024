@@ -12,6 +12,7 @@ public class Facade{
     private final CourseService courseService;
     private final EnrollService enrollService;
     private final LectureService lectureService;
+    private final AuthorService authorService;
 
     public StudentService getStudentService(){
         return studentService;
@@ -31,6 +32,10 @@ public class Facade{
 
     public LectureService getLectureService(){
         return lectureService;
+    }
+
+    public AuthorService getAuthorService(){
+        return authorService;
     }
 
 }

@@ -46,15 +46,22 @@ public class StudentService {
         return tracking;
     }
 
-//    public TestEntity save(TestEntity testEntity) {
-//        universityRepository.save(testEntity);
-//        return testEntity;
-//    }
-//
-//    public TestEntity findById(int id) {
-//        Optional<TestEntity> testEntity = universityRepository.findById(id);
-//        return testEntity.orElse(null);
-//    }
+    public List<UnivE> findTotalCreditsAndAvgExams() {
+        List<UnivE> tracking = repository.findTotalCreditsAndAvgExams();
+        System.out.println(tracking);
+        return tracking;
+    }
 
+    public List<UnivH1> findCountStudentsBasedDept() {
+        List<UnivH1> tracking = repository.findCountStudentsBasedDept();
+        System.out.println(tracking);
+        return tracking;
+    }
+
+    public List<UnivH2> findCountStudentsBasedYear() {
+        List<UnivH2> tracking = repository.findCountStudentsBasedYear();
+        System.out.println(tracking);
+        return tracking;
+    }
 
 }

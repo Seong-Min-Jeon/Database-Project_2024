@@ -8,6 +8,11 @@
         <link rel="stylesheet" href="../css/table.css" />
     </header>
     <body>
+
+        <div>
+            <a href="/">Return Home</a>
+        </div>
+
         <h2>a) 각 Table에 존재하는 Data를 확인하고 tuple의 총 개수를 출력할 수 있어야 한다.</h2>
 
         <table>

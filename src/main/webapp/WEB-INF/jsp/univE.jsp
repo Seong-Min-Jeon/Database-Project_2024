@@ -4,7 +4,7 @@
 <html lang="ko">
     <header>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>1. b</title>
+        <title>1. e</title>
         <link rel="stylesheet" href="../css/table.css" />
     </header>
     <body>
@@ -13,25 +13,26 @@
             <a href="/">Return Home</a>
         </div>
 
-        <h2>b) 특정 Student를 선택하여 해당 Student가 수강하는
-            Course 이름과 학점 및 시험 점수를 검색할 수 있어야 한다.</h2>
-
-        <form name="stuname" method="get" action="/university/b/1">
-            <p>이름: <input type="text" name="name"></p>
-            <p><input type="submit" name="submit" value="제출"></p>
-        </form>
+        <h2>e) 학생별로 수강한 교과목의 총학점(sum of credits)과
+            시험점수의 평균을 확인할 수 있어야 한다.</h2>
 
         <table>
             <tr>
+                <th>sno</th>
                 <th>sname</th>
+                <th>sum of credits</th>
+                <th>avg of exams</th>
             </tr>
-            <c:forEach items="${students}" var="object">
+            <c:forEach items="${univE}" var="object">
                 <tr>
+                    <td>${object.getSno()}</td>
                     <td>${object.getSname()}</td>
+                    <td>${object.getTotalCredits()}</td>
+                    <td>${object.getAvgExams()}</td>
                 </tr>
             </c:forEach>
         </table>
-        <span><b>Student Name Table</b></span>
+        <span><b>Credits and Exams Table</b></span>
 
     </body>
 </html>

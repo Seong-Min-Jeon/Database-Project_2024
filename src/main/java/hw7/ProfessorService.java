@@ -16,4 +16,10 @@ public class ProfessorService {
         return tracking;
     }
 
+    public List<UnivG> findDeptAndCountLecture() {
+        List<UnivG> tracking = repository.findDeptAndCountLecture();
+        System.out.println(tracking);
+        return tracking;
+    }
+
 }

@@ -2,7 +2,6 @@ package hw7.controller;
 
 import hw7.domain.*;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,8 +23,9 @@ public class Controller {
     }
 
     @GetMapping(value = "/home")
-    public String home() {
-        return "Hello World";
+    public ModelAndView home() {
+        ModelAndView modelAndView =  new ModelAndView("home");
+        return modelAndView;
     }
 
     @GetMapping(value = "/university/a")
@@ -86,6 +86,56 @@ public class Controller {
         List<UnivD> list2 = facade.getStudentService().findLowGradeStudent();
         modelAndView.addObject("univD1", list1);
         modelAndView.addObject("univD2", list2);
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/university/e")
+    public ModelAndView UnivE() {
+        ModelAndView modelAndView =  new ModelAndView("univE");
+        List<UnivE> list = facade.getStudentService().findTotalCreditsAndAvgExams();
+        modelAndView.addObject("univE", list);
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/university/f")
+    public ModelAndView UnivF() {
+        ModelAndView modelAndView =  new ModelAndView("univF");
+        List<UnivF> list = facade.getCourseService().findAvgExamsAndCountStudents();
+        modelAndView.addObject("univF", list);
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/university/g")
+    public ModelAndView UnivG() {
+        ModelAndView modelAndView =  new ModelAndView("univG");
+        List<UnivG> list = facade.getProfessorService().findDeptAndCountLecture();
+        modelAndView.addObject("univG", list);
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/university/h")
+    public ModelAndView UnivH() {
+        ModelAndView modelAndView =  new ModelAndView("univH");
+        List<UnivH1> list1 = facade.getStudentService().findCountStudentsBasedDept();
+        List<UnivH2> list2 = facade.getStudentService().findCountStudentsBasedYear();
+        modelAndView.addObject("univH1", list1);
+        modelAndView.addObject("univH2", list2);
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/bookstore/a")
+    public ModelAndView BookA() {
+        ModelAndView modelAndView =  new ModelAndView("bookA");
+        List<AuthorEntity> list = facade.getAuthorService().findAllAuthors();
+        modelAndView.addObject("bookA", list);
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/bookstore/a/1")
+    public ModelAndView BookA1(String name, String address) {
+        ModelAndView modelAndView =  new ModelAndView("bookA1");
+        List<BookA> list = facade.getAuthorService().retrieveBookA(name, address);
+        modelAndView.addObject("bookA", list);
         return modelAndView;
     }
 

@@ -4,7 +4,7 @@
 <html lang="ko">
     <header>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>1. b</title>
+        <title>1. g</title>
         <link rel="stylesheet" href="../css/table.css" />
     </header>
     <body>
@@ -13,25 +13,21 @@
             <a href="/">Return Home</a>
         </div>
 
-        <h2>b) 특정 Student를 선택하여 해당 Student가 수강하는
-            Course 이름과 학점 및 시험 점수를 검색할 수 있어야 한다.</h2>
-
-        <form name="stuname" method="get" action="/university/b/1">
-            <p>이름: <input type="text" name="name"></p>
-            <p><input type="submit" name="submit" value="제출"></p>
-        </form>
+        <h2>g) 학과별로 개설된 강좌(Lecture)의 수를 확인 할 수 있어야 한다.</h2>
 
         <table>
             <tr>
-                <th>sname</th>
+                <th>dept</th>
+                <th>count lectures</th>
             </tr>
-            <c:forEach items="${students}" var="object">
+            <c:forEach items="${univG}" var="object">
                 <tr>
-                    <td>${object.getSname()}</td>
+                    <td>${object.getDept()}</td>
+                    <td>${object.getCountLectures()}</td>
                 </tr>
             </c:forEach>
         </table>
-        <span><b>Student Name Table</b></span>
+        <span><b>Dept and Count Lecture Table</b></span>
 
     </body>
 </html>

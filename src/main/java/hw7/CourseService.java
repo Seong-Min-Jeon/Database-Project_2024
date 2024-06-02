@@ -16,4 +16,10 @@ public class CourseService {
         return tracking;
     }
 
+    public List<UnivF> findAvgExamsAndCountStudents() {
+        List<UnivF> tracking = repository.findAvgExamsAndCountStudents();
+        System.out.println(tracking);
+        return tracking;
+    }
+
 }

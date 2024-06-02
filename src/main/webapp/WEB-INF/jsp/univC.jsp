@@ -8,6 +8,11 @@
         <link rel="stylesheet" href="../css/table.css" />
     </header>
     <body>
+
+        <div>
+            <a href="/">Return Home</a>
+        </div>
+
         <h2>c) Student의 시험 점수에 대한 학점이 잘못 기재되어 있는 학생의 이름과 학번, 과목번호
             를 확인 할 수 있어야 하며, 수정 요청에 대해 정상적인 학점으로 수정이 되어야 한다.
             (단, 학점 부여방식은 다음과 같다고 가정한다. 60점 미만 : F, 60~69 : D, 70~79 :

@@ -18,4 +18,12 @@ public interface ProfessorRepository extends JpaRepository<ProfessorEntity, Inte
     )
     List<ProfessorEntity> findAllProfessors();
 
+    @Transactional
+    @Query(
+            value = "SELECT PDEPT AS DEPT, COUNT(*) AS COUNTLECTURES " +
+                    "FROM PROFESSOR JOIN LECTURE USING(PNO) " +
+                    "GROUP BY PDEPT",
+            nativeQuery = true
+    )
+    List<UnivG> findDeptAndCountLecture();
 }

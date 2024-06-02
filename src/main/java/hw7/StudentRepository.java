@@ -21,9 +21,9 @@ public interface StudentRepository extends JpaRepository<StudentEntity, Integer>
 
     @Transactional
     @Query(
-            value = "SELECT C.CNAME AS CNAME, C.CREDIT AS CREDIT, E.EXAM AS EXAM " +
-                    "FROM STUDENT S JOIN ENROLL E USING(SNO) JOIN COURSE C USING(CNO) " +
-                    "WHERE UPPER(S.SNAME) = UPPER(:sname)",
+            value = "SELECT CNAME, CREDIT, EXAM " +
+                    "FROM STUDENT JOIN ENROLL USING(SNO) JOIN COURSE USING(CNO) " +
+                    "WHERE UPPER(SNAME) = UPPER(:sname)",
             nativeQuery = true
     )
     List<UnivB> retrieveUnivB(@Param("sname") String sname);
@@ -74,5 +74,33 @@ public interface StudentRepository extends JpaRepository<StudentEntity, Integer>
             nativeQuery = true
     )
     List<UnivD> findLowGradeStudent();
+
+    @Transactional
+    @Query(
+            value = "SELECT SNO, SNAME, SUM(CREDIT) as TOTALCREDITS, ROUND(AVG(EXAM),2) AS AVGEXAMS " +
+                    "FROM STUDENT JOIN ENROLL USING(SNO) JOIN COURSE USING(CNO) " +
+                    "GROUP BY SNO, SNAME",
+            nativeQuery = true
+    )
+    List<UnivE> findTotalCreditsAndAvgExams();
+
+    @Transactional
+    @Query(
+            value = "SELECT COUNT(*) as COUNTSTUDENTS, DEPT " +
+                    "FROM STUDENT " +
+                    "GROUP BY DEPT",
+            nativeQuery = true
+    )
+    List<UnivH1> findCountStudentsBasedDept();
+
+    @Transactional
+    @Query(
+            value = "SELECT COUNT(*) as COUNTSTUDENTS, YEAR " +
+                    "FROM STUDENT " +
+                    "GROUP BY YEAR " +
+                    "ORDER BY YEAR",
+            nativeQuery = true
+    )
+    List<UnivH2> findCountStudentsBasedYear();
 
 }

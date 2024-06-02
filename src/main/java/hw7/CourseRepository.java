@@ -17,4 +17,13 @@ public interface CourseRepository extends JpaRepository<CourseEntity, Integer>{
     )
     List<CourseEntity> findAllCourses();
 
+    @Transactional
+    @Query(
+            value = "SELECT CNO, CNAME, ROUND(AVG(EXAM),2) AS AVGEXAMS, COUNT(SNO) AS COUNTSTUDENTS " +
+                    "FROM COURSE JOIN ENROLL USING(CNO) JOIN STUDENT USING(SNO) " +
+                    "GROUP BY CNO, CNAME",
+            nativeQuery = true
+    )
+    List<UnivF> findAvgExamsAndCountStudents();
+
 }
