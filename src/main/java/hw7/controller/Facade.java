@@ -13,6 +13,9 @@ public class Facade{
     private final EnrollService enrollService;
     private final LectureService lectureService;
     private final AuthorService authorService;
+    private final PublisherService publisherService;
+    private final CustomerService customerService;
+    private final WarehouseService warehouseService;
 
     public StudentService getStudentService(){
         return studentService;
@@ -36,6 +39,18 @@ public class Facade{
 
     public AuthorService getAuthorService(){
         return authorService;
+    }
+
+    public PublisherService getPublisherService(){
+        return publisherService;
+    }
+
+    public CustomerService getCustomerService(){
+        return customerService;
+    }
+
+    public WarehouseService getWarehouseService(){
+        return warehouseService;
     }
 
 }

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -137,6 +138,68 @@ public class Controller {
         List<BookA> list = facade.getAuthorService().retrieveBookA(name, address);
         modelAndView.addObject("bookA", list);
         return modelAndView;
+    }
+
+    @GetMapping(value = "/bookstore/b")
+    public ModelAndView BookB() {
+        ModelAndView modelAndView =  new ModelAndView("bookB");
+        List<PublisherEntity> list = facade.getPublisherService().findAllPublishers();
+        modelAndView.addObject("bookB", list);
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/bookstore/b/1")
+    public ModelAndView BookB1(String name) {
+        ModelAndView modelAndView =  new ModelAndView("bookB1");
+        List<BookB> list = facade.getPublisherService().retrieveBookB(name);
+        modelAndView.addObject("bookB", list);
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/bookstore/c")
+    public ModelAndView BookC() {
+        ModelAndView modelAndView =  new ModelAndView("bookC");
+        List<CustomerEntity> list = facade.getCustomerService().findAllCustomers();
+        modelAndView.addObject("bookC", list);
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/bookstore/c/1")
+    public ModelAndView BookC1(String email) {
+        ModelAndView modelAndView =  new ModelAndView("bookC1");
+        List<BookC> list = facade.getCustomerService().retrieveBookC(email);
+        modelAndView.addObject("bookC", list);
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/bookstore/d")
+    public ModelAndView BookD() {
+        ModelAndView modelAndView =  new ModelAndView("bookD");
+        List<AuthorEntity> list1 = facade.getAuthorService().findAllAuthors();
+        modelAndView.addObject("bookD1", list1);
+        List<PublisherEntity> list2 = facade.getPublisherService().findAllPublishers();
+        modelAndView.addObject("bookD2", list2);
+        List<WarehouseEntity> list3 = facade.getWarehouseService().findALlWarehouse();
+        modelAndView.addObject("bookD3", list3);
+        return modelAndView;
+    }
+
+    @PostMapping(value = "/bookstore/d/1")
+    public ModelAndView BookD1(int ISBN, String title, int year, int price,
+                               String authorData, String publisherData, String[] codes, String[] nums) {
+        System.out.println(ISBN);
+        System.out.println(title);
+        System.out.println(year);
+        System.out.println(price);
+        System.out.println(authorData);
+        System.out.println(publisherData);
+        System.out.println(Arrays.asList(codes));
+        System.out.println(Arrays.asList(nums));
+//        ModelAndView modelAndView =  new ModelAndView("bookD1");
+//        List<BookC> list = facade.getCustomerService().retrieveBookC(email);
+//        modelAndView.addObject("bookC", list);
+//        return modelAndView;
+        return null;
     }
 
 }
