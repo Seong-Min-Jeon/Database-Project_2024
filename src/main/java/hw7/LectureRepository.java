@@ -10,6 +10,7 @@ import java.util.List;
 @org.springframework.stereotype.Repository
 public interface LectureRepository extends JpaRepository<LectureEntity, LectureId>{
 
+    // 1.a를 위한 query
     @Transactional
     @Query(
             value = "SELECT * FROM LECTURE",

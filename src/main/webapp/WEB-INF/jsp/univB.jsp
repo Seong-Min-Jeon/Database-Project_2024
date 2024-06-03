@@ -17,16 +17,18 @@
             Course 이름과 학점 및 시험 점수를 검색할 수 있어야 한다.</h2>
 
         <form name="stuname" method="get" action="/university/b/1">
-            <p>이름: <input type="text" name="name"></p>
+            <p>sno: <input type="text" name="sno"></p>
             <p><input type="submit" name="submit" value="제출"></p>
         </form>
 
         <table>
             <tr>
+                <th>sno</th>
                 <th>sname</th>
             </tr>
             <c:forEach items="${students}" var="object">
                 <tr>
+                    <td>${object.getSno()}</td>
                     <td>${object.getSname()}</td>
                 </tr>
             </c:forEach>

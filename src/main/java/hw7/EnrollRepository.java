@@ -11,6 +11,7 @@ import java.util.List;
 @org.springframework.stereotype.Repository
 public interface EnrollRepository extends JpaRepository<EnrollEntity, EnrollId>{
 
+    // 1.a를 위한 query
     @Transactional
     @Query(
             value = "SELECT * FROM ENROLL",
@@ -18,6 +19,7 @@ public interface EnrollRepository extends JpaRepository<EnrollEntity, EnrollId>{
     )
     List<EnrollEntity> findAllEnrolls();
 
+    // 1.c를 위한 query
     @Modifying
     @Transactional
     @Query(

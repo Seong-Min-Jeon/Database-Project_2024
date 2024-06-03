@@ -11,6 +11,7 @@ import java.util.List;
 @org.springframework.stereotype.Repository
 public interface CustomerRepository extends JpaRepository<CustomerEntity, Integer>{
 
+    // 2.c를 위한 query
     @Transactional
     @Query(
             value = "SELECT * FROM CUSTOMER",
@@ -18,6 +19,7 @@ public interface CustomerRepository extends JpaRepository<CustomerEntity, Intege
     )
     List<CustomerEntity> findAllCustomers();
 
+    // 2.c를 위한 query
     @Transactional
     @Query(
             value = "SELECT ISBN, TITLE, YEAR, PRICE, " +

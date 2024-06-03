@@ -4,6 +4,7 @@ import hw7.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+// Service들과 Controller를 연결하기 위해 Facade Pattern을 사용
 @Service
 @RequiredArgsConstructor
 public class Facade{
@@ -16,6 +17,10 @@ public class Facade{
     private final PublisherService publisherService;
     private final CustomerService customerService;
     private final WarehouseService warehouseService;
+    private final BookService bookService;
+    private final StocksService stocksService;
+    private final WrittenByService writtenByService;
+    private final PublishedByService publishedByService;
 
     public StudentService getStudentService(){
         return studentService;
@@ -51,6 +56,22 @@ public class Facade{
 
     public WarehouseService getWarehouseService(){
         return warehouseService;
+    }
+
+    public BookService getBookService(){
+        return bookService;
+    }
+
+    public StocksService getStocksService(){
+        return stocksService;
+    }
+
+    public WrittenByService getWrittenByService(){
+        return writtenByService;
+    }
+
+    public PublishedByService getPublishedByService() {
+        return publishedByService;
     }
 
 }

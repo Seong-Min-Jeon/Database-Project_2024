@@ -10,6 +10,7 @@ public class WarehouseService {
     @Autowired
     private WarehouseRepository repository;
 
+    // 2.d를 위한 함수
     public List<WarehouseEntity> findALlWarehouse() {
         List<WarehouseEntity> tracking = repository.findALlWarehouse();
         System.out.println(tracking);

@@ -12,6 +12,7 @@ import java.util.List;
 @org.springframework.stereotype.Repository
 public interface StudentRepository extends JpaRepository<StudentEntity, Integer>{
 
+    // 1.a를 위한 query
     @Transactional
     @Query(
             value = "SELECT * FROM STUDENT",
@@ -19,15 +20,17 @@ public interface StudentRepository extends JpaRepository<StudentEntity, Integer>
     )
     List<StudentEntity> findAllStudents();
 
+    // 1.b를 위한 query
     @Transactional
     @Query(
             value = "SELECT CNAME, CREDIT, EXAM " +
                     "FROM STUDENT JOIN ENROLL USING(SNO) JOIN COURSE USING(CNO) " +
-                    "WHERE UPPER(SNAME) = UPPER(:sname)",
+                    "WHERE SNO = :sno",
             nativeQuery = true
     )
-    List<UnivB> retrieveUnivB(@Param("sname") String sname);
+    List<UnivB> retrieveUnivB(@Param("sno") String sno);
 
+    // 1.c를 위한 query
     @Transactional
     @Query(
             value = "SELECT SNAME, SNO, CNO, EXAM, GRADE " +
@@ -41,6 +44,7 @@ public interface StudentRepository extends JpaRepository<StudentEntity, Integer>
     )
     List<UnivC> findWrongGradeStudents();
 
+    // 1.c를 위한 query
     @Transactional
     @Query(
             value = "SELECT SNAME, SNO, CNO, EXAM, GRADE " +
@@ -49,6 +53,7 @@ public interface StudentRepository extends JpaRepository<StudentEntity, Integer>
     )
     List<UnivC> findAllGradeAndStudents();
 
+    // 1.d를 위한 query
     @Transactional
     @Query(
             value = "WITH  " +
@@ -62,6 +67,7 @@ public interface StudentRepository extends JpaRepository<StudentEntity, Integer>
     )
     List<UnivD> findHighGradeStudent();
 
+    // 1.d를 위한 query
     @Transactional
     @Query(
             value = "WITH  " +
@@ -75,6 +81,7 @@ public interface StudentRepository extends JpaRepository<StudentEntity, Integer>
     )
     List<UnivD> findLowGradeStudent();
 
+    // 1.e를 위한 query
     @Transactional
     @Query(
             value = "SELECT SNO, SNAME, SUM(CREDIT) as TOTALCREDITS, ROUND(AVG(EXAM),2) AS AVGEXAMS " +
@@ -84,6 +91,7 @@ public interface StudentRepository extends JpaRepository<StudentEntity, Integer>
     )
     List<UnivE> findTotalCreditsAndAvgExams();
 
+    // 1.h를 위한 query
     @Transactional
     @Query(
             value = "SELECT COUNT(*) as COUNTSTUDENTS, DEPT " +
@@ -93,6 +101,7 @@ public interface StudentRepository extends JpaRepository<StudentEntity, Integer>
     )
     List<UnivH1> findCountStudentsBasedDept();
 
+    // 1.h를 위한 query
     @Transactional
     @Query(
             value = "SELECT COUNT(*) as COUNTSTUDENTS, YEAR " +

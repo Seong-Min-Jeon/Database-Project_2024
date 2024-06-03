@@ -11,6 +11,7 @@ import java.util.List;
 @org.springframework.stereotype.Repository
 public interface ProfessorRepository extends JpaRepository<ProfessorEntity, Integer>{
 
+    // 1.a를 위한 query
     @Transactional
     @Query(
             value = "SELECT * FROM PROFESSOR",
@@ -18,6 +19,7 @@ public interface ProfessorRepository extends JpaRepository<ProfessorEntity, Inte
     )
     List<ProfessorEntity> findAllProfessors();
 
+    // 1.g를 위한 query
     @Transactional
     @Query(
             value = "SELECT PDEPT AS DEPT, COUNT(*) AS COUNTLECTURES " +

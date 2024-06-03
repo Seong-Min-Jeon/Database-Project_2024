@@ -12,6 +12,7 @@ import java.util.List;
 @org.springframework.stereotype.Repository
 public interface WarehouseRepository extends JpaRepository<WarehouseEntity, Integer>{
 
+    // 2.d를 위한 query
     @Transactional
     @Query(
             value = "SELECT * FROM WAREHOUSE",

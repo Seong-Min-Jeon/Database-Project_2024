@@ -20,18 +20,34 @@
                 <th>cno</th>
                 <th>cname</th>
                 <th>avg of exams</th>
-                <th>count students</th>
             </tr>
-            <c:forEach items="${univF}" var="object">
+            <c:forEach items="${univF1}" var="object">
                 <tr>
                     <td>${object.getCno()}</td>
                     <td>${object.getCname()}</td>
                     <td>${object.getAvgExams()}</td>
+                </tr>
+            </c:forEach>
+        </table>
+        <span><b>Exams and Student Table</b></span>
+
+        <table>
+            <tr>
+                <th>cno</th>
+                <th>cname</th>
+                <th>grade</th>
+                <th>count students</th>
+            </tr>
+            <c:forEach items="${univF2}" var="object">
+                <tr>
+                    <td>${object.getCno()}</td>
+                    <td>${object.getCname()}</td>
+                    <td>${object.getGrade()}</td>
                     <td>${object.getCountStudents()}</td>
                 </tr>
             </c:forEach>
         </table>
-        <span><b>Exams and Count Student Table</b></span>
+        <span><b>Grade and Student Table</b></span>
 
     </body>
 </html>

@@ -11,6 +11,7 @@ import java.util.List;
 @org.springframework.stereotype.Repository
 public interface PublisherRepository extends JpaRepository<PublisherEntity, Integer>{
 
+    // 2.b, 2.d를 위한 query
     @Transactional
     @Query(
             value = "SELECT * FROM PUBLISHER",
@@ -18,6 +19,7 @@ public interface PublisherRepository extends JpaRepository<PublisherEntity, Inte
     )
     List<PublisherEntity> findAllPublishers();
 
+    // 2.b를 위한 query
     @Transactional
     @Query(
             value = "SELECT ISBN, TITLE, PRICE, SUM(NUM) AS NUM " +

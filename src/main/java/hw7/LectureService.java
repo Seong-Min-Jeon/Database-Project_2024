@@ -10,6 +10,7 @@ public class LectureService {
     @Autowired
     private LectureRepository repository;
 
+    // 1.a를 위한 함수
     public List<LectureEntity> findAllLectures() {
         List<LectureEntity> tracking = repository.findAllLectures();
         System.out.println(tracking);

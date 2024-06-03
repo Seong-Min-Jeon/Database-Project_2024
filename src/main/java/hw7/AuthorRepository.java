@@ -12,6 +12,7 @@ import java.util.List;
 @org.springframework.stereotype.Repository
 public interface AuthorRepository extends JpaRepository<AuthorEntity, Integer>{
 
+    // 2.a, 2.d를 위한 query
     @Transactional
     @Query(
             value = "SELECT * FROM AUTHOR",
@@ -19,6 +20,7 @@ public interface AuthorRepository extends JpaRepository<AuthorEntity, Integer>{
     )
     List<AuthorEntity> findAllAuthors();
 
+    // 2.a를 위한 query
     @Transactional
     @Query(
             value = "SELECT ISBN, TITLE, SUM(NUM) AS NUM " +
@@ -30,5 +32,17 @@ public interface AuthorRepository extends JpaRepository<AuthorEntity, Integer>{
             nativeQuery = true
     )
     List<BookA> retrieveBookA(@Param("name") String name, @Param("address") String address);
+
+    // 2.f를 위한 query
+    @Transactional
+    @Query(
+            value = "SELECT NAME, ADDRESS, COUNT(*) as NUM, " +
+                    "MAX(PRICE) AS MAX, MIN(PRICE) AS MIN, FLOOR(AVG(PRICE)) AS AVG " +
+                    "FROM AUTHOR JOIN WRITTEN_BY USING (NAME, ADDRESS) " +
+                    "JOIN BOOK USING (ISBN) " +
+                    "GROUP BY NAME, ADDRESS",
+            nativeQuery = true
+    )
+    List<BookF> findBooks();
 
 }
