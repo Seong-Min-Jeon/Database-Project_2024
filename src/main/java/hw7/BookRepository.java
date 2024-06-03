@@ -56,22 +56,23 @@ public interface BookRepository extends JpaRepository<BookEntity, Integer>{
             value = "SELECT ISBN, TITLE, PRICE, SUM(NUM) AS NUM " +
                     "FROM BOOK JOIN STOCKS USING (ISBN) " +
                     "GROUP BY ISBN, TITLE, PRICE " +
-                    "HAVING SUM(NUM) >= 500",
+                    "HAVING SUM(NUM) >= :num " +
+                    "ORDER BY ISBN",
             nativeQuery = true
     )
-    List<BookG> findBookStocks();
+    List<BookG> findBookStocks(@Param("num") int num);
 
     // 2.g를 위한 query
     @Modifying
     @Transactional
     @Query(
             value = "UPDATE BOOK SET " +
-                    "PRICE = FLOOR(PRICE * 90 / 100) " +
+                    "PRICE = FLOOR(PRICE * (100-:percent) / 100) " +
                     "WHERE EXISTS ( " +
-                    "SELECT * FROM BOOK JOIN STOCKS USING(ISBN) WHERE NUM >= 500 " +
+                    "SELECT * FROM BOOK JOIN STOCKS USING(ISBN) WHERE NUM >= :num " +
                     ")",
             nativeQuery = true
     )
-    void discountBooks();
+    void discountBooks(@Param("num") int num, @Param("percent") int percent);
 
 }

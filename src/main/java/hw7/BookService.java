@@ -38,15 +38,15 @@ public class BookService {
     }
 
     // 2.g를 위한 함수
-    public List<BookG> findBookStocks() {
-        List<BookG> tracking = repository.findBookStocks();
+    public List<BookG> findBookStocks(int num) {
+        List<BookG> tracking = repository.findBookStocks(num);
         System.out.println(tracking);
         return tracking;
     }
 
     // 2.g를 위한 함수
-    public void discountBooks() {
-        repository.discountBooks();
+    public void discountBooks(int num, int percent) {
+        repository.discountBooks(num, percent);
     }
 
 }

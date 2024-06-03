@@ -16,7 +16,11 @@
         <h2>g) 재고가 특정 부수 이상 넘어가는 도서를 검색하고, 가격 할인을 할 수 있어야 한다.
             (예, 재고가 500부 이상 남은 도서에 대해서 가격을 10% 할인하여 BOOK.price에 반영)</h2>
 
-        <p>할인이 적용되었습니다.</p>
+        <form name="discount" method="post" action="/bookstore/g/2">
+            <input value="${num}" name="num" style="display: none">
+            <input value="${percent}" name="percent" style="display: none">
+            <p><input type="submit" name="submit" value="${num}부 이상 남은 도서 ${percent}%씩 할인하기"></p>
+        </form>
 
         <table>
             <tr>

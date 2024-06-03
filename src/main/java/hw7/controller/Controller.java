@@ -265,21 +265,30 @@ public class Controller {
         return modelAndView;
     }
 
-    // bookstore/g로 접속하였을 때, 총 재고량이 500부 이상인 책의 데이터를 넘겨줌
+    // bookstore/g로 접속하였을 때, 할인을 적용할 부수와 할인률을 정할 수 있는 페이지를 출력함
     @GetMapping(value = "/bookstore/g")
     public ModelAndView BookG() {
         ModelAndView modelAndView =  new ModelAndView("bookG");
-        List<BookG> list = facade.getBookService().findBookStocks();
+        return modelAndView;
+    }
+    
+    // bookstore/g로 접속하였을 때, 총 재고량이 num부 이상인 책의 데이터를 넘겨줌
+    @GetMapping(value = "/bookstore/g/1")
+    public ModelAndView BookG1(int num, int percent) {
+        ModelAndView modelAndView =  new ModelAndView("bookG1");
+        List<BookG> list = facade.getBookService().findBookStocks(num);
         modelAndView.addObject("bookG", list);
+        modelAndView.addObject("num", num);
+        modelAndView.addObject("percent", percent);
         return modelAndView;
     }
 
-    // university/g/1로 Post 요청이 왔을 때, 총 재고량이 500부 이상인 책의 가격을 10% 낮추고, 할인한 책의 데이터를 넘겨줌
-    @PostMapping(value = "/bookstore/g/1")
-    public ModelAndView BookG1() {
-        facade.getBookService().discountBooks();
-        ModelAndView modelAndView =  new ModelAndView("bookG1");
-        List<BookG> list = facade.getBookService().findBookStocks();
+    // university/g/1로 Post 요청이 왔을 때, 총 재고량이 m부 이상인 책의 가격을 n% 낮추고, 할인한 책의 데이터를 넘겨줌
+    @PostMapping(value = "/bookstore/g/2")
+    public ModelAndView BookG2(int num, int percent) {
+        facade.getBookService().discountBooks(num, percent);
+        ModelAndView modelAndView =  new ModelAndView("bookG2");
+        List<BookG> list = facade.getBookService().findBookStocks(num);
         modelAndView.addObject("bookG", list);
         return modelAndView;
     }
