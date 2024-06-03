@@ -55,7 +55,7 @@ public interface BookRepository extends JpaRepository<BookEntity, Integer>{
     @Query(
             value = "SELECT ISBN, TITLE, PRICE, SUM(NUM) AS NUM " +
                     "FROM BOOK JOIN STOCKS USING (ISBN) " +
-                    "GROUP BY ISBN, TITLE, PRICE" +
+                    "GROUP BY ISBN, TITLE, PRICE " +
                     "HAVING SUM(NUM) >= 500",
             nativeQuery = true
     )

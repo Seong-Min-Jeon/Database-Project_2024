@@ -33,8 +33,10 @@
                 </tr>
             </c:forEach>
         </table>
+        <span>tuple의 총 개수: ${students.size()}개</span> <p></p>
         <span><b>STUDENT Table</b></span>
 
+        <br><br>
         <br><br>
 
         <table>
@@ -53,8 +55,10 @@
                 </tr>
             </c:forEach>
         </table>
+        <span>tuple의 총 개수: ${professors.size()}개</span> <p></p>
         <span><b>PROFESSOR Table</b></span>
 
+        <br><br>
         <br><br>
 
         <table>
@@ -73,8 +77,10 @@
                 </tr>
             </c:forEach>
         </table>
+        <span>tuple의 총 개수: ${courses.size()}개</span> <p></p>
         <span><b>Course Table</b></span>
 
+        <br><br>
         <br><br>
 
         <table>
@@ -93,8 +99,10 @@
                 </tr>
             </c:forEach>
         </table>
+        <span>tuple의 총 개수: ${enrolls.size()}개</span> <p></p>
         <span><b>Enroll Table</b></span>
 
+        <br><br>
         <br><br>
 
         <table>
@@ -113,6 +121,7 @@
                 </tr>
             </c:forEach>
         </table>
+        <span>tuple의 총 개수: ${lectures.size()}개</span> <p></p>
         <span><b>Lecture Table</b></span>
 
     </body>

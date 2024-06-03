@@ -31,17 +31,15 @@
         </table>
         <span><b>Exams and Student Table</b></span>
 
+        <br><br>
+
         <table>
             <tr>
-                <th>cno</th>
-                <th>cname</th>
                 <th>grade</th>
                 <th>count students</th>
             </tr>
             <c:forEach items="${univF2}" var="object">
                 <tr>
-                    <td>${object.getCno()}</td>
-                    <td>${object.getCname()}</td>
                     <td>${object.getGrade()}</td>
                     <td>${object.getCountStudents()}</td>
                 </tr>

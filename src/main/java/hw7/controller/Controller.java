@@ -278,7 +278,7 @@ public class Controller {
     @PostMapping(value = "/bookstore/g/1")
     public ModelAndView BookG1() {
         facade.getBookService().discountBooks();
-        ModelAndView modelAndView =  new ModelAndView("bookG");
+        ModelAndView modelAndView =  new ModelAndView("bookG1");
         List<BookG> list = facade.getBookService().findBookStocks();
         modelAndView.addObject("bookG", list);
         return modelAndView;

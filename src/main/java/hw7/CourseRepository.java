@@ -31,9 +31,10 @@ public interface CourseRepository extends JpaRepository<CourseEntity, Integer>{
     // 1.f를 위한 query
     @Transactional
     @Query(
-            value = "SELECT CNO, CNAME, GRADE, COUNT(SNO) AS COUNTSTUDENTS " +
+            value = "SELECT GRADE, COUNT(SNO) AS COUNTSTUDENTS " +
                     "FROM COURSE JOIN ENROLL USING(CNO) JOIN STUDENT USING(SNO) " +
-                    "GROUP BY CNO, CNAME, GRADE",
+                    "GROUP BY GRADE " +
+                    "ORDER BY GRADE",
             nativeQuery = true
     )
     List<UnivF> findCountStudents();
